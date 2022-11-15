@@ -16,11 +16,11 @@ const Home :React.FC = ()=>{
     }
     useEffect(() => {
 
-        async function test2() {
+        async function actionCall() {
             await contactAction();
         }
         contactResponse?.length<2 &&
-        test2();
+        actionCall();
 
     },[contactResponse?.length])
 
