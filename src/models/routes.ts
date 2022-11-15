@@ -1,10 +1,6 @@
-import {Pathes} from '../utilities/enums'
-import {appRoutes} from '../utilities/app.routes'
 
-export interface AppRoutesProps {
-    path: Pathes,
-    component: typeof appRoutes
-}
+
+
 
 export interface Contact {
     name: string,
