@@ -1,25 +1,26 @@
 import React from 'react';
 import {Outlet} from 'react-router-dom'
-//import 'src/assets/css/main';
-import Loading from "../Loading";
-import WholeList from "../WholeList";
-import Search from "../Search";
+import '../../assets/css/main.css';
+import LastVisited from "../LastVisited";
 
-
-
-interface Props{
-    outlet: JSX.Element;
-};
 
 
 const Layout  :React.FC = ()=>{
 
-
     return (
-        <>
-            <h1>Welcome to Layout Page</h1>
-            <Outlet />
-        </>
+        <div>
+        <div ></div>
+            <div className="mahsa-row" style={{maxWidth: '1000px', background: '#eee'}}>
+                <div className="col-t-5" style={{background: "purple"}}>
+                    <LastVisited/>
+                </div>
+                <div className="col-t-1"></div>
+                <div className="col-t-10" style={{background: "pink"}}>
+                    <Outlet/>
+                </div>
+            </div>
+        <div></div>
+        </div>
     )
 }
 export default Layout
