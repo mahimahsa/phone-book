@@ -1,8 +1,10 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../../store";
-import {getContacts} from "../../store/contactSlice";
-import {Contact} from "../../models/routes";
+import {getContacts} from "../../store/contactListSlice";
+import {Contact} from "../../models/interface";
+import ContactList from "./ContactList";
+
 
 
 const Home :React.FC = ()=>{
@@ -10,32 +12,26 @@ const Home :React.FC = ()=>{
     const contactResponse : Contact[]= useSelector((state :RootState)=> state.contactList.contacts)
 
     const contactAction = async () => {
-        dispatch(await getContacts());
-        contactResponse?.map((item) =>console.log(item));
-        console.log(contactResponse)
+        dispatch(await getContacts(""));
     }
+
     useEffect(() => {
 
         async function actionCall() {
             await contactAction();
         }
-        contactResponse?.length<2 &&
+      //  contactResponse?.length<2 &&
         actionCall();
 
     },[contactResponse?.length])
 
     return (
         <>
-        <h1>Welcome to HOme Page</h1>
-        {
-            contactResponse?.map((item) =>
-                <div>
-                    <span>name: {item.name}</span>
-                    <div style={{display: 'inline', padding: '7px, 30px'}}>.</div>
-                    <span>phone: {item.phone}</span>
-                </div>
-            )
-        }
+            {
+                contactResponse?.length> 2 &&
+                <ContactList contacts={contactResponse} />
+            }
+
         </>
     )
 }
