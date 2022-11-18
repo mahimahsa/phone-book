@@ -1,6 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import {Contact} from '../../models/interface';
 import "../../assets/css/style.css";
+import {useDispatch} from "react-redux";
+import {AppDispatch} from "../../store";
+import {getVisitedContacts} from "../../store/lastVisitedSlice";
+
 
 
 interface Props {
@@ -10,6 +14,21 @@ interface Props {
 
 
 const ShowContact : React.FC<Props> = ({contact})=>{
+
+    const dispatch= useDispatch<AppDispatch>();
+    const contactAction = async () => {
+        dispatch(await getVisitedContacts(contact));
+    }
+
+
+
+    useEffect(()=>{
+        async function actionCall() {
+            await contactAction();
+        }
+        actionCall();
+
+    },[])
 
 
 

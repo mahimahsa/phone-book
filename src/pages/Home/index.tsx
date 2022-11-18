@@ -4,6 +4,7 @@ import {AppDispatch, RootState} from "../../store";
 import {getContacts} from "../../store/contactListSlice";
 import {Contact} from "../../models/interface";
 import ContactList from "./ContactList";
+import Cookies from 'universal-cookie';
 
 
 
@@ -20,10 +21,16 @@ const Home :React.FC = ()=>{
         async function actionCall() {
             await contactAction();
         }
-      //  contactResponse?.length<2 &&
+        //contactResponse?.length<2 &&
         actionCall();
 
-    },[contactResponse?.length])
+    },[])
+    useEffect(()=>{
+        if(contactResponse?.length<1){
+            const cookie= new Cookies;
+            cookie.set('visitedArray', []);
+        }
+    })
 
     return (
         <>

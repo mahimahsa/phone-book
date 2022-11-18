@@ -1,12 +1,14 @@
 import {configureStore} from '@reduxjs/toolkit'
 import contactListReducer from './contactListSlice'
 import contactReducer from './contactSlice'
+import lastVisitedReducer from './lastVisitedSlice'
 
 
 export const store = configureStore({
     reducer: {
         contactList: contactListReducer,
-        singleContact: contactReducer
+        singleContact: contactReducer,
+        lastVisited: lastVisitedReducer
     }
 })
 
