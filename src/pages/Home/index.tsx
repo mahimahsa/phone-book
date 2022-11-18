@@ -5,6 +5,7 @@ import {getContacts} from "../../store/contactListSlice";
 import {Contact} from "../../models/interface";
 import ContactList from "./ContactList";
 import Cookies from 'universal-cookie';
+import Search from "../../components/Search";
 
 
 
