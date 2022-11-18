@@ -19,10 +19,7 @@ const MyContact :React.FC = ()=>{
     }
 
     useEffect(() => {
-        console.log(SingleContactResponse);
-        console.log("start use Effect");
         async function actionCall() {
-            console.log("start use Effect action call");
             await contactAction();
         }
 

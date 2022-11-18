@@ -13,12 +13,10 @@ export const getContacts = createAsyncThunk(
 "contactList/getContacts",
     async (urlParam:string) => {
         let url= baseUrl+urlParam;
-        console.log(url);
         try {
             const response = await axios.get(
                 url
             );
-            console.log(response);
             if(urlParam === "")
             {return response.data.items;}
             else {return response.data}
@@ -45,7 +43,6 @@ const contactsSlice = createSlice(
                 state.contacts=action.payload;
                 state.isLoading = false;
                 state.hasError = false;
-                console.log(action.payload);
             })
             .addCase(getContacts.rejected, (state, action) => {
                 state.hasError = true

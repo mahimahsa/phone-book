@@ -1,70 +1,47 @@
-import {createSlice, createAsyncThunk, createAction, PayloadAction} from '@reduxjs/toolkit';
-import {Contact, InitialState, InitialStateList} from '../models/interface';
-import axios from 'axios';
-import {URLs} from '../utilities/enums'
+import {createSlice,  PayloadAction} from '@reduxjs/toolkit';
+import {Contact} from '../models/interface';
+import Cookies from 'universal-cookie';
 
 
-const initCon : Contact=
+
+const initState : Contact[]= [];
+
+const lastVisitedSlice = createSlice(
     {
-        name: "",
-        email: "",
-        gender: "",
-        phone: "",
-        note: "",
-        telegram: "",
-        avatar: "",
-        company: "",
-        address: "",
-        createdAt: "",
-        updatedAt: "",
-        id: 0
-    }
-
-const initState : InitialState= {contact: initCon, isLoading: false, hasError: false};
-
-let baseUrl= "http://localhost:1337/passenger"
-export const getContact = createAsyncThunk(
-
-"contactList/getContacts",
-    async (urlParam:string) => {
-
-        console.log(urlParam);
-        try {
-            const response = await axios.get(
-                urlParam
-            );
-            console.log(response);
-           return response.data
-
-        } catch (error) {
-            console.error(error);
-        }
-    });
-
-
-
-const contactSlice = createSlice(
-    {
-        name: "singleContact",
+        name: "lastVisitedSlice",
         initialState: initState,
-        reducers: {},
-        extraReducers: (builder) => {
-            builder
-                .addCase(getContact.pending, (state, action) => {
-                    state.isLoading = true;
-                    state.hasError = false;
-                })
-                .addCase(getContact.fulfilled, (state, action) => {
-                    state.contact=action.payload;
-                    state.isLoading = false;
-                    state.hasError = false;
-                    console.log(action.payload);
-                })
-                .addCase(getContact.rejected, (state, action) => {
-                    state.hasError = true
-                    state.isLoading = false;
-                })
-        }
+        reducers: {
+            getVisitedContacts: (state , action :PayloadAction<Contact>)=>{
+                if(action.payload?.name?.length> 1) {
+                    const cookie = new Cookies();
+                    let visitedList :Contact[]= cookie.get('visitedArray');
+                    console.log(visitedList);
+
+                    let indx : number=  visitedList?.length;
+                    console.log((visitedList[indx-1]?.name +"  "+ action?.payload?.name));
+                    console.log((visitedList[indx-1]?.name == action?.payload?.name));
+                    if(visitedList[indx-1]?.name == action?.payload?.name){
+                        console.log("in name equally "+JSON.stringify(state));
+                        return state;
+                    }
+                    if (visitedList?.length <4) {
+                        visitedList?.push(action.payload);
+                        cookie.set("visitedArray", visitedList, {path :"/" , maxAge : 360000000000})
+                        console.log("in length <4 "+JSON.stringify(state));
+                        return state =visitedList;
+
+                    }
+                    if (visitedList.length == 4  ) {
+                        visitedList?.shift();
+                        visitedList?.push(action.payload);
+                        cookie.set("visitedArray", visitedList, {path :"/" , maxAge : 360000000000});
+                        console.log("length == 4  "+JSON.stringify(state));
+                        return state = visitedList;
+                    }
+                } else
+                    return state
+            }
+        },
     });
 
 /*// Selectors
@@ -72,5 +49,5 @@ export const selectCompanies = state => state.companyList.company;
 export const selectLoadingState = state => state.companyList.isLoading;
 export const selectErrorState = state => state.companyList.hasError;*/
 
-
-export default contactSlice.reducer;
+export const {getVisitedContacts} = lastVisitedSlice.actions;
+export default lastVisitedSlice.reducer;
