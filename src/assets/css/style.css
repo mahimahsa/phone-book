@@ -14,16 +14,19 @@ a{
     src: local('MuseoSans300'),
     url('../fonts/Museo/MuseoSans_300.ttf') format('trueType');
 }
+.glance-div{
+    padding: 4px 2px 0 9%;
+}
 .frs-glnc-div{
     width: 95%;
     margin-left: 2%;
-    background: #464040;
+    background: #484747;
     border: 1px solid #000000;
     border-radius: 5px;
-
+    margin-bottom: 3px;
 }
 .content-div{
-    background: #464040;
+    background: #3e3d3d;
     border: 1px solid #000000;
     border-radius: 5px;
     margin: 2%;
@@ -71,7 +74,47 @@ a{
 .avatar{
     width: 36px;
     height: 36px;
-    border: 1px solid;
+    border: 1px solid #ffffff;
     border-radius: 50%;
-    background-color: #ffffff;
+}
+.title-component{
+    margin: 1% 9% 4% 9%;
+    color: #2a97c4;
+}
+.title-existence{
+    margin: 1% 9% 4% 9%;
+    color: #ffffff;
+}
+@media screen and (min-width: 1000px) {
+    .visited-div{
+        background: #3e3d3d;
+        border: 1px solid #000000;
+        border-radius: 5px;
+        margin: 2% 0;
+        padding: 10px 0;
+    }
+}
+@media screen and (min-width: 768px) {
+    .margin-text{
+        margin-top: 9px;
+    }
+    .visited-div{
+        background: #3e3d3d;
+        border: 1px solid #000000;
+        border-radius: 5px;
+        margin: 2%;
+        padding: 10px 0;
+    }
+}
+@media screen and (max-width: 768px) {
+    .margin-text{
+        margin-top: 9px;
+    }
+    .visited-div{
+        background: #3e3d3d;
+        border: 1px solid #000000;
+        border-radius: 5px;
+        margin: 2% ;
+        padding: 10px 0;
+    }
 }
