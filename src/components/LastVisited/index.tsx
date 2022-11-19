@@ -18,22 +18,21 @@ console.log(lastVisitedResponse);
            reversedArr.push(lastVisitedResponse[i]);
        }
        setVisitedList(reversedArr)
-    },[lastVisitedResponse])
+    })
 
 
-    if(visitedList?.length !=0){
+    if (visitedList?.length != 0) {
         return (
-<>
-
-            <div className='home-container visited-div'>
-                <div className="title-component">Last Visited</div>
-                {
-                    visitedList?.map((item)=><FirstGlanceCon contact={item} />)
-                }
-            </div>
-    </>
-               )
-    }else {
+            <>
+                <div className='home-container visited-div'>
+                    <div className="title-component">Last Visited</div>
+                    {
+                        visitedList?.map((item) => <FirstGlanceCon contact={item}/>)
+                    }
+                </div>
+            </>
+        )
+    } else {
         return (
             <div className='home-container visited-div'>
                 <div className="title-component">Last Visited</div>

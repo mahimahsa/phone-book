@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {AppDispatch, RootState} from "../../store";
+import React from 'react';
+import { useSelector} from "react-redux";
+import { RootState} from "../../store";
 
-import {Contact, InitialStateList} from "../../models/interface";
+import { InitialStateList} from "../../models/interface";
 import ContactList from "../Home/ContactList";
 
 
@@ -24,7 +24,7 @@ const Search :React.FC = ()=>{
         }else {
             return (
                 <>
-                    <h1>Sorry there is a problem! We could not find your searched contact</h1>
+                    <h3>Sorry there is a problem! We could not find your searched contact</h3>
                 </>
             )
         }

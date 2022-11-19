@@ -2,7 +2,7 @@ body {
     font-family: MuseoSans300 !important;
     background: #2a2a2a;
     font-weight: bold;
-    color: #f3f3f3 !important;
+    color: #ffffff !important;
 }
 a{
     color: #ffffff;
@@ -74,12 +74,14 @@ a{
 .avatar{
     width: 36px;
     height: 36px;
-    border: 1px solid #ffffff;
+    border: 1px solid #97faff;
     border-radius: 50%;
 }
 .title-component{
     margin: 1% 9% 4% 9%;
     color: #2a97c4;
+    font-size: 18px;
+    font-weight: 500;
 }
 .title-existence{
     margin: 1% 9% 4% 9%;
@@ -100,6 +102,7 @@ a{
     padding: 4px 10px;
     background: #2a97c4;
     color: white;
+    border-radius: 3px;
 }
 @media screen and (min-width: 1000px) {
     .visited-div{

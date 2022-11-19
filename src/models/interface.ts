@@ -4,13 +4,9 @@ export interface AppRouteProps {
     element: React.FC
 }
 
-export interface ShortViewContact {
-    id: number,
-    name: string,
-    phone: string,
-}
 
-export interface Contact extends ShortViewContact{
+export interface Contact {
+    id: number,
     name: string,
     email: string,
     gender: string,
