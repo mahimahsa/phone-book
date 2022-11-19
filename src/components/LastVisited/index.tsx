@@ -25,7 +25,8 @@ console.log(lastVisitedResponse);
         return (
 <>
 
-            <div className='home-container '>
+            <div className='home-container visited-div'>
+                <div className="title-component">Last Visited</div>
                 {
                     visitedList?.map((item)=><FirstGlanceCon contact={item} />)
                 }
@@ -34,8 +35,9 @@ console.log(lastVisitedResponse);
                )
     }else {
         return (
-            <div className='home-container '>
-                <h1>You not visit any contact so far!</h1>
+            <div className='home-container visited-div'>
+                <div className="title-component">Last Visited</div>
+                <h3 className="title-existence">You not visit any contact so far!</h3>
             </div>
         )
     }
