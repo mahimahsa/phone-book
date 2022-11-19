@@ -16,7 +16,6 @@ const FirstGlanceCon : React.FC<Props> = ({contact})=>{
 
     const imgStyle= {
         background: `url(${contact.avatar}) center -1px / 33px no-repeat`,
-        backgroundColor: '#ffffff',
     }
 
     return (

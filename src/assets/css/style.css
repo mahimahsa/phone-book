@@ -85,6 +85,22 @@ a{
     margin: 1% 9% 4% 9%;
     color: #ffffff;
 }
+.single-contact{
+    margin-left: 9%;
+}
+.mrg{
+    margin-bottom: 15px;
+}
+.my-con-title{
+    color: #97faff;
+}
+.back-button{
+    border: 1px solid;
+    margin: 0 2% 2% 2%;
+    padding: 4px 10px;
+    background: #2a97c4;
+    color: white;
+}
 @media screen and (min-width: 1000px) {
     .visited-div{
         background: #3e3d3d;

@@ -6,12 +6,15 @@ import {Contact} from "../../models/interface";
 import ContactList from "./ContactList";
 import Cookies from 'universal-cookie';
 import Search from "../../components/Search";
+import useWindowDimensions from "../../utilities/useWindowDimensions";
+import LastVisited from "../../components/LastVisited";
 
 
 
 const Home :React.FC = ()=>{
     const dispatch= useDispatch<AppDispatch>();
     const contactResponse : Contact[]= useSelector((state :RootState)=> state.contactList.contacts)
+    const {width}= useWindowDimensions();
 
     const contactAction = async () => {
         dispatch(await getContacts(""));
@@ -33,14 +36,25 @@ const Home :React.FC = ()=>{
         }
     })
 
-    return (
-        <>
-            {
-                contactResponse?.length> 2 &&
-                <ContactList contacts={contactResponse} />
-            }
-
-        </>
-    )
+    if(width<1000){
+        return (
+            <>
+                <LastVisited />
+                {
+                    contactResponse?.length> 2 &&
+                    <ContactList contacts={contactResponse} />
+                }
+            </>
+        )
+    }else {
+        return (
+            <>
+                {
+                    contactResponse?.length > 2 &&
+                    <ContactList contacts={contactResponse}/>
+                }
+            </>
+        )
+    }
 }
 export default Home

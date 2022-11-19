@@ -32,9 +32,6 @@ const Layout  :React.FC = ()=>{
                                 <Search/>
                             </div>
                             <div className="col-tm-15 col-m-15" >
-                                <LastVisited/>
-                            </div>
-                            <div className="col-tm-15 col-m-15" >
                                 <Outlet/>
                             </div>
                         </>

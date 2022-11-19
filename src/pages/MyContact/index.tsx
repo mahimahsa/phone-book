@@ -35,7 +35,7 @@ const MyContact :React.FC = ()=>{
 
     return (
         <>
-            <button onClick={navigateBack}>Back to home page</button>
+            <button onClick={navigateBack} className="back-button">Back To The Home Page</button>
             { SingleContactResponse?.name?.length>0 &&
                 <ShowContact contact={SingleContactResponse}/>
             }
