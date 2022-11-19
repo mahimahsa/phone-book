@@ -5,6 +5,7 @@ import {useDispatch} from "react-redux";
 import {AppDispatch} from "../../store";
 import {getSearchedContacts} from "../../store/searchListSlice";
 import {convertToUrl} from "../../utilities/convertToUrl";
+import {Srch} from "../../utilities/enums"
 
 
 const Search : React.FC = ()=>{
@@ -12,8 +13,7 @@ const Search : React.FC = ()=>{
     const navigation= useNavigate();
     const dispatch = useDispatch<AppDispatch>();
     const [searchInp, setSearchInp]= useState<string>("");
-    const [visibility, setVisibility]= useState<string>("none");
-    const [formData, setFormData] = useState<{}>({ full_name: '', phone: ''});
+    const [visibility, setVisibility]= useState<string>(Srch.none);
     const [isName, setIsName]= useState<string>("");
     const [isPhone, setIsPhone]= useState<string>("");
 
@@ -23,12 +23,12 @@ const Search : React.FC = ()=>{
         let param : string="";
         if(isName != "" || isPhone != "") {
             if (isName != "" && isPhone != "") {
-                param = "?name="+isName+"&phone="+isPhone;
+                param = "?"+Srch.name+"="+isName+"&"+Srch.phone+"="+isPhone;
             }else {
                 if (isName != "" && isPhone == "") {
-                    param = "?name="+isName;
+                    param = "?"+Srch.name+"="+isName;
                 }else {
-                    param = "?phone="+isPhone;
+                    param = "?"+Srch.phone+"="+isPhone;
                 }
             }
         }
@@ -37,18 +37,18 @@ const Search : React.FC = ()=>{
     }
     const searching= async ()=>{
         if(searchInp == "") {
-            setVisibility('flex');
+            setVisibility(Srch.flex);
         }else {
             dispatch(await getSearchedContacts(searchInp));
             navigation("/search")
         }
     }
     const closeSearch= ()=>{
-        setVisibility("none");
+        setVisibility(Srch.none);
         setSearchInp("");
     }
     const openSearch= ()=>{
-        setVisibility("flex");
+        setVisibility(Srch.flex);
         setSearchInp("");
     }
 
@@ -68,7 +68,7 @@ const Search : React.FC = ()=>{
                         <button className="search-button sticky-button" onClick={searching}> </button>
                 </div>
                 <div>
-                    {visibility == "flex" &&
+                    {visibility == Srch.flex &&
                         <button className="close-button sticky-button" onClick={closeSearch}> </button>
                     }
                 </div>

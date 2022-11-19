@@ -1,10 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {Contact} from '../../models/interface';
 import "../../assets/css/style.css";
-import {useNavigate, Link} from 'react-router-dom';
-import {getContacts} from "../../store/contactListSlice";
-import {useDispatch} from "react-redux";
-import {AppDispatch} from "../../store";
+import { Link} from 'react-router-dom';
+
 
 interface Props {
     contact: Contact,
@@ -23,8 +21,7 @@ const FirstGlanceCon : React.FC<Props> = ({contact})=>{
             <div className='frs-glnc-div ' >
                 <div className="glance-div mahsa-row">
                     <div className='col-t-2 col-tm-3 col-m-3'>
-                            <div className="avatar" style={imgStyle} >
-                            </div>
+                            <div className="avatar" style={imgStyle} ></div>
                     </div>
                     <div className='col-t-13 col-tm-12 col-m-11'>
                         <div className="mahsa-row margin-text">

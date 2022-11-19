@@ -5,7 +5,6 @@ import {getContacts} from "../../store/contactListSlice";
 import {Contact} from "../../models/interface";
 import ContactList from "./ContactList";
 import Cookies from 'universal-cookie';
-import Search from "../../components/Search";
 import useWindowDimensions from "../../utilities/useWindowDimensions";
 import LastVisited from "../../components/LastVisited";
 
@@ -21,11 +20,9 @@ const Home :React.FC = ()=>{
     }
 
     useEffect(() => {
-
         async function actionCall() {
             await contactAction();
         }
-        //contactResponse?.length<2 &&
         actionCall();
 
     },[])
