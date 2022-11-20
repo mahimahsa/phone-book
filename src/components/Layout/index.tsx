@@ -21,6 +21,7 @@ const Layout  :React.FC = ()=>{
     let visitedList :Contact[]= cookie.get('visitedArray');
 
 
+
     const contactAction=  async ()=>{
         dispatch( await loadingVisitedContacts(visitedList));
     }
@@ -30,6 +31,7 @@ const Layout  :React.FC = ()=>{
             contactAction();
         }
     }
+
 
     return (
         <div>

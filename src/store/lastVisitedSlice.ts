@@ -19,19 +19,13 @@ const lastVisitedSlice = createSlice(
                 if(action.payload?.name?.length> 1) {
                     const cookie = new Cookies();
                     let visitedList :Contact[]= cookie.get('visitedArray');
-                    console.log(visitedList);
-
                     let indx : number=  visitedList?.length;
-                    console.log((visitedList[indx-1]?.name +"  "+ action?.payload?.name));
-                    console.log((visitedList[indx-1]?.name == action?.payload?.name));
                     if(visitedList[indx-1]?.name == action?.payload?.name){
-                            console.log("in name equally "+JSON.stringify(state));
                             return state;
                     }
                     if (visitedList?.length <4) {
                             visitedList?.push(action.payload);
                             cookie.set("visitedArray", visitedList, {path :"/" , maxAge : 360000000000})
-                            console.log("in length <4 "+JSON.stringify(state));
                             return state =visitedList;
 
                     }
@@ -39,7 +33,6 @@ const lastVisitedSlice = createSlice(
                             visitedList?.shift();
                             visitedList?.push(action.payload);
                             cookie.set("visitedArray", visitedList, {path :"/" , maxAge : 360000000000});
-                            console.log("length == 4  "+JSON.stringify(state));
                             return state = visitedList;
                     }
                 } else
@@ -47,6 +40,10 @@ const lastVisitedSlice = createSlice(
             }
         },
     });
+
+
+
+
 
 
 

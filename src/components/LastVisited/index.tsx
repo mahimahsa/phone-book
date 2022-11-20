@@ -17,7 +17,7 @@ const LastVisited : React.FC = ()=>{
            reversedArr.push(lastVisitedResponse[i]);
        }
        setVisitedList(reversedArr)
-    })
+    },[lastVisitedResponse])
 
 
     if (visitedList?.length != 0) {

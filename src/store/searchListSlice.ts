@@ -13,12 +13,10 @@ export const getSearchedContacts = createAsyncThunk(
 "searchListSlice/getSearchedContacts",
     async (urlParam:string) => {
         let url= baseUrl+urlParam;
-        console.log(url)
         try {
             const response = await axios.get(
                 url
             );
-            console.log(response.data.items);
             return response.data.items
 
         } catch (error) {
@@ -44,9 +42,6 @@ const searchListSlice = createSlice(
                 state.contacts=action.payload;
                 state.isLoading = false;
                 state.hasError = false;
-                console.log(state.contacts);
-                console.log(state.isLoading);
-                console.log(state.hasError);
             })
             .addCase(getSearchedContacts.rejected, (state, action) => {
                 state.hasError = true

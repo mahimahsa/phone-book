@@ -14,7 +14,6 @@ const MyContact :React.FC = ()=>{
     const SingleContactResponse : Contact= useSelector((state :RootState)=> state.singleContact.contact)
 
     const contactAction = async () => {
-        console.log("contactAction");
         dispatch(await getContact("http://localhost:1337/passenger/"+urlParam));
     }
 
