@@ -22,8 +22,6 @@ const MyContact :React.FC = ()=>{
         async function actionCall() {
             await contactAction();
         }
-
-
         actionCall();
 
     },[SingleContactResponse?.name?.length])

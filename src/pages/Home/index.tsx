@@ -7,6 +7,7 @@ import ContactList from "./ContactList";
 import Cookies from 'universal-cookie';
 import useWindowDimensions from "../../utilities/useWindowDimensions";
 import LastVisited from "../../components/LastVisited";
+import {sortContactList} from "../../utilities/sortContactList";
 
 
 
@@ -32,11 +33,15 @@ const Home :React.FC = ()=>{
             cookie.set('visitedArray', []);
         }
     })
+    useEffect(()=>{
+        sortContactList()
+    })
 
     if(width<1000){
         return (
             <>
                 <LastVisited />
+
                 {
                     contactResponse?.length> 2 &&
                     <ContactList contacts={contactResponse} />

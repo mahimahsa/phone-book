@@ -2,7 +2,7 @@ import React from 'react';
 import {Contact} from "../models/interface";
 import {useSelector} from "react-redux";
 import {RootState} from "../store";
-import {alphabet} from '../assets/files/alphabet';
+import {alphabet} from './alphabet';
 
 const contactResponse : Contact[]= useSelector((state :RootState)=> state?.contactList?.contacts);
 
