@@ -1,4 +1,4 @@
-export const alphabet= [{
+export const alphabet= {
   "A": {},
   "B": {},
   "C": {},
@@ -25,4 +25,4 @@ export const alphabet= [{
   "X": {},
   "Y": {},
   "Z": {}
-} ]
+}

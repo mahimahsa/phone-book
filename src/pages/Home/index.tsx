@@ -10,6 +10,7 @@ import LastVisited from "../../components/LastVisited";
 
 
 
+
 const Home :React.FC = ()=>{
     const dispatch= useDispatch<AppDispatch>();
     const contactResponse : Contact[]= useSelector((state :RootState)=> state.contactList.contacts)
@@ -31,12 +32,13 @@ const Home :React.FC = ()=>{
             const cookie= new Cookies;
             cookie.set('visitedArray', []);
         }
-    })
+    },[])
 
     if(width<1000){
         return (
             <>
                 <LastVisited />
+
                 {
                     contactResponse?.length> 2 &&
                     <ContactList contacts={contactResponse} />

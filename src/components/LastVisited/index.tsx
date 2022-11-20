@@ -10,7 +10,6 @@ const LastVisited : React.FC = ()=>{
     const [visitedList , setVisitedList]= useState<Contact[]>([]);
 
    useEffect(()=>{
-console.log(lastVisitedResponse);
 
        let counter : number= lastVisitedResponse?.length
        let reversedArr: Contact[]= [];
@@ -18,7 +17,7 @@ console.log(lastVisitedResponse);
            reversedArr.push(lastVisitedResponse[i]);
        }
        setVisitedList(reversedArr)
-    })
+    },[lastVisitedResponse])
 
 
     if (visitedList?.length != 0) {
