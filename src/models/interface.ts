@@ -1,4 +1,5 @@
 import React from 'react';
+import {initCon} from "../utilities/initCon";
 export interface AppRouteProps {
     path: string
     element: React.FC
@@ -20,6 +21,11 @@ export interface Contact {
     updatedAt: string,
 }
 export interface InitialStateList {
+    contacts: [string , [Contact]][],
+    isLoading: boolean,
+    hasError: boolean
+}
+export interface InitialStates {
     contacts: Contact[],
     isLoading: boolean,
     hasError: boolean

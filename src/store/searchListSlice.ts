@@ -1,10 +1,10 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
-import {Contact, InitialStateList} from '../models/interface';
+import {Contact, InitialStates} from '../models/interface';
 import axios from 'axios';
 import {URLs} from '../utilities/enums'
 
 
-const initStateList : InitialStateList= {contacts:[], isLoading: false, hasError: false};
+const initStateList : InitialStates= {contacts:[], isLoading: false, hasError: false};
 
 
 let baseUrl= "http://localhost:1337/passenger";

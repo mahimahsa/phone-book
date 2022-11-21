@@ -1,10 +1,12 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 import {Contact, InitialStateList} from '../models/interface';
 import axios from 'axios';
+import {sortContactList} from "../utilities/sortContactList";
 import {URLs} from '../utilities/enums'
+import {initCon} from "../utilities/initCon";
 
 
-const initStateList : InitialStateList= {contacts:[], isLoading: false, hasError: false};
+const initStateList : InitialStateList= {contacts: [], isLoading: false, hasError: false};
 
 
 let baseUrl= "http://localhost:1337/passenger";
@@ -18,7 +20,9 @@ export const getContacts = createAsyncThunk(
                 url
             );
             if(urlParam === "")
-            {return response.data.items;}
+            {
+                return  sortContactList(response.data.items);
+            }
             else {return response.data}
 
         } catch (error) {
@@ -43,6 +47,8 @@ const contactsSlice = createSlice(
                 state.contacts=action.payload;
                 state.isLoading = false;
                 state.hasError = false;
+                console.log(action.payload)
+                console.log(state.contacts)
             })
             .addCase(getContacts.rejected, (state, action) => {
                 state.hasError = true

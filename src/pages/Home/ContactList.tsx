@@ -1,19 +1,26 @@
 import React from 'react';
 import {Contact} from "../../models/interface";
-import FirstGlanceCon from "../../components/FirstGlanceCon";
+import HomeFirstLook from "../../components/FirstGlanceCon/HomeFirstLook";
 
 
 interface Props {
-    contacts: Contact[],
+    contacts: [string, Contact[]][],
 }
 
 const ContactList :React.FC<Props> = ({contacts})=>{
     return (
         <>
             {
-                contacts?.map((item) =>
-                    <FirstGlanceCon contact={item} />
+                contacts?.map((alphabetContactList)=>
+                    <div className="home-contacts-div">
+                        <div className="letter">{alphabetContactList[0]}</div>
+                        <div className="letter-border">
+                            {alphabetContactList[1]?.map((item) =>
+                                <HomeFirstLook contact={item} />)}
+                        </div>
+                    </div>
                 )
+
             }
         </>
     )

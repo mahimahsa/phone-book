@@ -13,13 +13,15 @@ interface Props {
 
 const FirstGlanceCon : React.FC<Props> = ({contact})=>{
 
-
+    const imgStyle= {
+        background: `url(${contact.avatar}) center -1px / 33px no-repeat`,
+    }
 
 
     return (
         <>
             <Link to={"/my-contact?"+contact.id} className="link-hover">
-                <div className='frs-glnc-div ' >
+                <div className='' >
                    <FirstLookContact contact={contact} />
                 </div>
             </Link>

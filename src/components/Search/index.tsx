@@ -83,6 +83,7 @@ const Search : React.FC = ()=>{
                             <input type="text" name="name"
                                    className="input"
                                    value={isName}
+                                   placeholder="Enter Here"
                                    onBlur={paramCreator}
                                    onChange={event => setIsName(event.target.value)}/>
                         </div>
@@ -97,6 +98,7 @@ const Search : React.FC = ()=>{
                             <input type="text" name="phone"
                                    className="input"
                                    value={isPhone}
+                                   placeholder="Enter Here"
                                    onBlur={paramCreator}
                                    onChange={event => setIsPhone(event.target.value)}/>
                         </div>
