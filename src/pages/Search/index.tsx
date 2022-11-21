@@ -2,17 +2,17 @@ import React from 'react';
 import { useSelector} from "react-redux";
 import { RootState} from "../../store";
 
-import { InitialStateList} from "../../models/interface";
-import ContactList from "../Home/ContactList";
+import { InitialStates} from "../../models/interface";
+import SearchContactList from "./SearchContactList";
 
 
 const Search :React.FC = ()=>{
 
-    const searchResponse : InitialStateList= useSelector((state :RootState)=> state.searchList);
-
+    const searchResponse : InitialStates= useSelector((state :RootState)=> state.searchList);
+console.log(searchResponse)
     if(searchResponse?.contacts?.length>0){
         return(
-            <ContactList contacts={searchResponse?.contacts} />
+            <SearchContactList contactList={searchResponse?.contacts} />
         )
     }else {
         if(searchResponse?.isLoading){
